@@ -1,0 +1,8 @@
+<% @candidates.each do |candidate| %>
+  <tr>
+    <td><%= candidate.name %></td>
+    <td><%= candidate.email %></td>
+    <td><%= link_to 'Show', candidate_path(candidate) %></td>
+    <td><%= link_to 'candidates#form' %></td>
+  </tr>
+<% end %>

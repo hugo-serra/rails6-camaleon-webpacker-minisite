@@ -1,0 +1,12 @@
+function edit(id) {
+    $.ajax({
+        url: "<%= url_for 'candidates#form' %>",
+        data: {
+            id: id,
+            edit: true
+        },
+        success: function (result) {
+
+        }
+  })
+ }

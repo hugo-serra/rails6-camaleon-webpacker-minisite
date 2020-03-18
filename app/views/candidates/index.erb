@@ -1,0 +1,22 @@
+<div class="row p-3 p-md-5 m-md-3 align-items-center bg-light align-content-start">
+  <div class="col col-lg-6 col-sm-12 p-lg-3 align-self-start">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">email</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <%= render partial: 'candidates_list', locals: { candidates: @candidates} %>
+    </table>
+  </div>
+  <div class="col col-lg-6 col-sm-12 p-lg-3 border">
+    <div class="col-12 pt-3 wow animated fadeInRight hide" data-wow-delay=".2s">
+      <%= render partial: 'form', locals: { edit: false } %>
+    </div>
+  </div>
+</div>
+
+<%#= javascript_pack_tag 'hello_react' %>
