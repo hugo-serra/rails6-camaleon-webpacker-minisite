@@ -1,0 +1,66 @@
+<div class="navbar navbar-primary">
+  <div class="navbar-header">
+    <a id="logo" class="navbar-brand" href="<%= current_site.the_url %>"><%= image_tag current_site.the_logo, class: "img-responsive" %></a>
+    <button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <div id="navbar-main" class="navbar-collapse collapse">
+    <%= raw get_nav_menu('main_menu', 'nav navbar-nav ') %>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if signin?  %>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="<%= cama_current_user.decorate.the_avatar %>" style="max-width: 24px; border-radius: 50%" alt=""/> <%= cama_current_user.username %></a>
+          <ul class="dropdown-menu">
+            <li><a href="<%= cama_admin_dashboard_path %>">Dashboard</a></li>
+            <li><a href="<%= cama_admin_profile_path %>">Profile</a></li>
+            <li><a href="<%= cama_admin_logout_path %>">Logout</a></li>
+          </ul>
+        </li>
+      <% else %>
+        <li class="dropdown">
+          <a id="login-user" class="dropdown-toggle" data-toggle="dropdown" href="#">Login / Register</a>
+          <ul class="dropdown-menu">
+            <li><a href="<%= cama_admin_login_path %>">Login</a></li>
+            <li><a href="<%= cama_admin_register_path %>">Register</a></li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+    <%= raw current_site.draw_languages("language list-inline pull-right", true) %>
+  </div>
+</div>
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Shermanos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <%= raw draw_menu({
+          menu_slug: 'main_menu',
+          container_class: 'navbar-nav mr-auto',
+          item_class: 'nav-item ',
+          link_class: 'nav-link'
+      }) %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item <% if params[:controller] == 'homepage' %>active<% end %>">
+          <a class="nav-link" href="<%= url_for(action: 'index', controller: '/homepage') # MORE INFO: why does 'homepage' not work %>">Home </a>
+        </li>
+        <li class="nav-item <% if params[:controller] == 'services' %>active <% end %>">
+          <a class="nav-link" href="<%#= url_for(action: 'index', controller: 'services') %>">Services <% if params[:controller] == 'services' %><span class="sr-only">(current)</span> <% end %></a>
+        </li>
+        <li class="nav-item <% if params[:controller] == 'candidates' %>active <% end %>">
+          <a class="nav-link" href="<%#= url_for(action: 'index', controller: 'candidates') %>">Join Us <% if params[:controller] == 'candidates' %><span class="sr-only">(current)</span> <% end %></a>
+        </li>
+        <li class="nav-item <% if params[:controller] == 'contact_us' %>active <% end %>">
+          <a class="nav-link" href="<%#= url_for(action: 'index', controller: 'contact_us') %>">Contact Us <% if params[:controller] == 'contact_us' %><span class="sr-only">(current)</span> <% end %></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

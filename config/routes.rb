@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :homepage, :services, :candidates
   resources :contact_us, only: [:index]
   post 'contact_us', to: 'contact_us#send_email'
-  root 'homepage#index'
+    # root 'homepage#index'
 end
